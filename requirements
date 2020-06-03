@@ -1,2 +1,3 @@
-nmap
+python3-nmap
 pyshark
+csv
