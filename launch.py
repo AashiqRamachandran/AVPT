@@ -25,8 +25,10 @@ for packet in cap.sniff_continuously():
 	    else:
 	        print("New IP address ["+packet.ip.src+"] has just arrived.")
 	        data_from_nmap= nm.scan_top_ports(packet.ip.src)
+		os_results = nm.nmap_os_detection(packet.ip.src)
 	        print(data_from_nmap)
+		print(os_results)
 	        #usually over here we are going to have to add many many more VAPT tools
 	        #also have to write those objects to our csv file
 	        #oh and dont forget to import them and add them to the requirements file
-	        log.writerow([packet.ip.src, data_from_nmap])
+	        log.writerow([packet.ip.src, data_from_nmap, os_results])
